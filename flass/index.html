@@ -1,0 +1,33 @@
+html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Frame Extractor</title>
+</head>
+<body>
+    <h1>Video Frame Extractor</h1>
+
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept="video/*">
+        <input type="submit" value="Upload">
+    </form>
+
+    <h2>Extracted Frames:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Frame</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for frame_file in frame_files %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td><img src="{{ url_for('static', filename='frames/' ~ frame_file) }}"></td>
+                </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
